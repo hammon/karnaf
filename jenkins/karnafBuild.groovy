@@ -15,14 +15,14 @@ IF DEFINED DBSQLFILES (
 }
 
 
-freeStyleJob('karnaf-build'){
+freeStyleJob('karnafBuild'){
     parameters{
 
     }
     steps{
 
         shell("""
-echo "Hello karnaf-build"
+echo "Hello karnafBuild"
 pwd
 
 echo "WORKSPACE: $WORKSPACE"
