@@ -1,0 +1,65 @@
+group 'hammon'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile 'org.slf4j:slf4j-api:1.7.16'
+    compile 'org.slf4j:slf4j-log4j12:1.7.16'
+    compile 'org.apache.logging.log4j:log4j-core:2.5'
+
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.json:json:20141113'
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+
+    compile 'com.beust:jcommander:1.47'
+
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
+
+  //  compile 'org.elasticsearch:elasticsearch:1.7.1'//'org.elasticsearch:elasticsearch:1.4.3'
+
+    compile 'net.schmizz:sshj:0.10.0'
+
+    // https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
+    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.4.0.201606070830-r'
+    //compile 'org.apache.commons:commons-lang3:3.3.2'
+
+    // https://mvnrepository.com/artifact/org.webjars/google-diff-match-patch
+    compile group: 'org.webjars', name: 'google-diff-match-patch', version: '20121119-1'
+
+
+}
+
+task buildJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Karnaf Jar File',
+                'Implementation-Version': 1.0,
+                'Main-Class': 'karnaf.Karnaf'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+
+    copy{
+        from 'src/main/resources/conf'
+        into 'build/libs/conf'
+    }
+
+    copy{
+        from 'js'
+        into 'build/libs/js'
+    }
+
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    with jar
+}
