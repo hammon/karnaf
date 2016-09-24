@@ -45,7 +45,7 @@ public class Karnaf {
 
         cmd.parameters.forEach(param -> {
             //System.out.println(param);
-            log.info(param);
+            log.debug(param);
         });
 
         if(!cmd.file.isEmpty()){
