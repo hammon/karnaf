@@ -42,7 +42,7 @@ dependencies {
 task buildJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Karnaf Jar File',
-                'Implementation-Version': 1.0,
+                'Implementation-Version': 1,
                 'Main-Class': 'karnaf.Karnaf'
     }
     baseName = project.name
@@ -50,14 +50,16 @@ task buildJar(type: Jar) {
 
 
     copy{
-        from 'src/main/resources/conf'
-        into 'build/libs/conf'
+        from 'src/main/resources'
+        into 'build/libs'
     }
 
     copy{
         from 'js'
         into 'build/libs/js'
     }
+
+
 
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'

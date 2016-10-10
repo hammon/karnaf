@@ -31,6 +31,8 @@ public class Karnaf {
         jsExec.putBinding("log",log);
 
         jsExec.putBinding("proc",new ProcessModule());
+
+        jsExec.putBinding("ssh", new SshModule());
         jsExec.putBinding("http",new HttpModule());
 //        jsExec.putBinding("elasticSearch",new ElasticSearchModule());
 
