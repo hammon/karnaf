@@ -1,10 +1,24 @@
 
-ssh.connect("127.0.0.1","michael","");
+(function ()
+{
+   var keys=Object.keys( this );
+   for (var i in keys)
+   {
+     // if (typeof this[keys[i]] != 'function')
+     //+ this[keys[i]] + " - "
+      log.info(keys[i] + " - "  + typeof this[keys[i]]);
+   }
+})();
 
-log.info("hostname: " + ssh.exec("hostname"));
 
-log.info("pwd: " + ssh.exec("pwd"));
+function testSsh(){
+    ssh.connect("127.0.0.1","michael","");
 
-log.info("ls: " + ssh.exec("ls -l"));
+    log.info("hostname: " + ssh.exec("hostname"));
 
-ssh.disconnect();
+    log.info("pwd: " + ssh.exec("pwd"));
+
+    log.info("ls: " + ssh.exec("ls -l"));
+
+    ssh.disconnect();
+}
