@@ -18,14 +18,13 @@ dependencies {
 
     compile 'commons-io:commons-io:2.4'
     compile 'org.json:json:20141113'
-
     compile 'org.apache.commons:commons-lang3:3.4'
 
     compile 'com.beust:jcommander:1.47'
 
     compile group: 'commons-codec', name: 'commons-codec', version: '1.9'
 
-  //  compile 'org.elasticsearch:elasticsearch:1.7.1'//'org.elasticsearch:elasticsearch:1.4.3'
+    compile 'org.elasticsearch:elasticsearch:1.7.1'//'org.elasticsearch:elasticsearch:1.4.3'
 
     compile 'net.schmizz:sshj:0.10.0'
 
@@ -35,6 +34,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.webjars/google-diff-match-patch
     compile group: 'org.webjars', name: 'google-diff-match-patch', version: '20121119-1'
+
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
 
 
 }

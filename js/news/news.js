@@ -13,8 +13,8 @@ var newsHomeDir = "/home/michael/.news/";
 
 var sources = [
   // {"src":"http://www.linuxinsider.com/","dest":newsHomeDir + "linuxinsider.txt"},
-  // {"src":"http://cnn.com","dest": newsHomeDir + "cnn.txt"},
-  // {"src":"http://bbc.com","dest": newsHomeDir + "bbc.txt"},
+   {"src":"http://cnn.com","dest": newsHomeDir + "cnn.txt"},
+   {"src":"http://bbc.com","dest": newsHomeDir + "bbc.txt"},
   // {"src":"http://www.reuters.com/","dest": newsHomeDir + "reuters.txt"},
   {"src":"http://www.technewsworld.com/","dest": newsHomeDir + "technewsworld.txt"}
 ];
@@ -91,19 +91,20 @@ function processSources(){
   for(var i = 0;i < sources.length;i++){
     var pageInfo = getPageInfo(sources[i].src);
 
+    log.info("<><><><><><><><><sources[i]: " + JSON.stringify(sources[i]));
     log.info("<><><><><><><><><pageInfo: " + JSON.stringify(pageInfo));
     log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-    for(var i = 0;i < pageInfo.links.length;i++){
+    writeFile(sources[i].dest,pageInfo.text);
+
+    for(var j = 0;j < pageInfo.links.length;j++){
       log.info("=================================");
-      log.info(JSON.stringify(pageInfo.links[i]));
+      log.info(JSON.stringify(pageInfo.links[j]));
       log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     }
 
 //    var oldText = readFile(sources[i].dest);
-
 //    var diffs = JSON.parse( textDiff.diff(text,oldText));
-
     // for(var i = 0;i < diffs.deleted.length;i++){
     //   log.info("deleted: " + diffs.deleted[i]);
     // }
@@ -116,16 +117,16 @@ function processSources(){
     //   }
 
 //    }
-//    writeFile(sources[i].dest,text);
+ //   writeFile(sources[i].dest,text);
 //    allText += text + "\r\n";
 
 
-    //createNgramCounts(sources[i].dest);
+//    createNgramCounts(sources[i].dest);
 
-    //var map = getCharCount(text);
-    //var arr = mapToJsonArray(map);
+    var map = getCharCount(pageInfo.text);
+    var arr = mapToJsonArray(map);
 
-    //writeFile(sources[i].dest + ".charCount.json",JSON.stringify(arr,null,2));
+    writeFile(sources[i].dest + ".charCount.json",JSON.stringify(arr,null,2));
   }
 //  writeFile(newsHomeDir + "all.txt",allText);
 //  createNgramCounts(newsHomeDir + "all.txt");
