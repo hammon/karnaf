@@ -1,6 +1,9 @@
+import modules.MapUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import text.NGram;
 
 import java.io.FileWriter;
@@ -12,7 +15,9 @@ import java.util.Map;
 /**
  * Created by michael on 1/8/17.
  */
-public class CommonsCsv {
+public class CommonsCsvTest {
+
+    private static final Logger log = LoggerFactory.getLogger(CommonsCsvTest.class);
 
     String testString = "Contrary to the GNU Public License (GPL) the Apache Software License does not make any claims over your extensions. By extensions, we mean totally new code that invokes existing log4j classes. You are free to do whatever you wish with your proprietary log4j extensions. In particular, you may choose to never release your extensions to the wider public.\n" +
             "\n" +
@@ -24,38 +29,10 @@ public class CommonsCsv {
         NGram ngram = new NGram(testString);
         Map<String,Integer> mapCount = ngram.getTokensCount(1);
 
-        List<String[]> records = new ArrayList<String[]>();
+        MapUtils mapUtils = new MapUtils();
 
-        Iterator<Map.Entry<String, Integer>> it = mapCount.entrySet().iterator();
-
-
-        while (it.hasNext()) {
-            Map.Entry<String, Integer> kv = it.next();
-            records.add(new String[]{kv.getKey(),kv.getValue().toString()});
-        }
-
-        String outputFile = "/home/michael/test.csv";
-        CSVPrinter csvFilePrinter = null;
-        CSVFormat csvFileFormat = CSVFormat.EXCEL;
-        try {
-            FileWriter fileWriter = new FileWriter(outputFile);
-            csvFilePrinter = new CSVPrinter(fileWriter, csvFileFormat);
-
-//            List<String> list = new ArrayList<String>();
-//            for(Integer i = 0;i < 10; i++){
-//
-//                list.add(i.toString());
-//            }
-
-            csvFilePrinter.printRecords(records);
-
-
-            fileWriter.flush();
-            fileWriter.close();
-            csvFilePrinter.close();
-        }
-        catch (Exception ex){
-
-        }
+        mapUtils.mapToCsv(mapCount,"/home/michael/test.csv");
     }
+
+
 }

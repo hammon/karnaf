@@ -34,8 +34,13 @@ public class Karnaf {
 
         jsExec.putBinding("ssh", new SshModule());
         jsExec.putBinding("http",new HttpModule());
-        jsExec.putBinding("elasticSearch",new ElasticSearchModule());
 
+//        try {
+//            jsExec.putBinding("elasticSearch", new ElasticSearchModule());
+//        }
+//        catch (Exception e){
+//            log.warn("Failed to init es",e);
+//        }
 
         jsExec.eval(new File("js/globals.js"));
 

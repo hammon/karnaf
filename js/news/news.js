@@ -97,11 +97,11 @@ function processSources(){
 
     writeFile(sources[i].dest,pageInfo.text);
 
-    for(var j = 0;j < pageInfo.links.length;j++){
+//    for(var j = 0;j < pageInfo.links.length;j++){
       log.info("=================================");
-      log.info(JSON.stringify(pageInfo.links[j]));
+      log.info(JSON.stringify(pageInfo.links));
       log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    }
+//    }
 
 //    var oldText = readFile(sources[i].dest);
 //    var diffs = JSON.parse( textDiff.diff(text,oldText));
@@ -163,6 +163,10 @@ function getPageInfo(url){
     //log.info(result.output.text);
 
     return result.output;
+}
+
+function generateCsv(filePath){
+
 }
 
 
