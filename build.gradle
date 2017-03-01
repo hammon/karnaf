@@ -49,7 +49,6 @@ task buildJar(type: Jar) {
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 
-
     copy{
         from 'src/main/resources'
         into 'build/libs'
@@ -59,8 +58,6 @@ task buildJar(type: Jar) {
         from 'js'
         into 'build/libs/js'
     }
-
-
 
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
