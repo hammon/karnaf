@@ -2,7 +2,6 @@
 
 Javascript scripting framework based on [Nashorn](http://www.oracle.com/technetwork/articles/java/jf14-nashorn-2126515.html).
 
-Flexibility of Javascript with power of Java. 
 
 Setup
 ------------------------------
