@@ -50,7 +50,7 @@ function writeFile(path,data,append){
 Send http request and save respone:
 ```
 var response = http.get("http://example.com");
-writeFile("path/to/file/response.json",response);
+writeFile("path/to/file/response.txt",response);
 ```
 
 ##### Execute
